@@ -1,0 +1,21 @@
+name: PipelineWorkflow
+
+on:
+  push:
+    branches:
+      - another-test
+  pull:
+    branches:
+      - another-test
+  
+jobs:
+    build:
+        name: Azure Pipeline
+        runs_on: ubuntu-latest
+        steps:
+        - name: Azure Pipeline Action
+          uses: Azure/pipeline@v1
+          with:
+          azure-devops-projects-url: https://dev.azure.com/faizanansari1974/Agile%20Project
+          azure-pipeline-name: 'js-e2e-express-server.git'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
